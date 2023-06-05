@@ -37,9 +37,9 @@ Ateniese等人《provable data possession at untrusted stores》
 
 一个PDP系统可以由一个PDP方案构造得出，分为两个阶段，**Setup**和**Challenge**：
 
-**Setup: **拥有文件F的客户端 $C$ 运行 $KeyGen(1^k)$ 算法获得公私钥对 $(pk,sk)$，然后对每一个文件块$m_i(1\leq m_i \leq n)$，执行 $TagGen(pk,sk,m_i)$生成 $T_{m_i}$。$C$ 存储公私钥对 $(pk.sk)$，将 $pk, F, \sum=(T_{m_1},...,T{m_n})$ 发送给服务器 $S$ 存储，并从本地存储删除 $F$ 和 $\sum$ 。
+**Setup**: 拥有文件F的客户端 $C$ 运行 $KeyGen(1^k)$ 算法获得公私钥对 $(pk,sk)$，然后对每一个文件块$ m_i(1\leq m_i \leq n)$，执行 $TagGen(pk,sk,m_i)$生成 $T_{m_i}$。$C$ 存储公私钥对 $(pk.sk)$，将 $pk, F, \sum=(T_{m_1},...,T{m_n})$ 发送给服务器 $S$ 存储，并从本地存储删除 $F$ 和 $\sum$ 。
 
-**Challenge:** $C$ 生成一个挑战 $chal$，表明 $C$ 想要得到持有性证据的特定数据块。$C$ 发送 $chal$ 给 $S$ 。$S$ 运行 $GenProof(pk,F,chal,\sum)$ 生成数据持有性证据 $V$ 并发送给 $S$。最后，$C$ 可以通过运行$CheckProof(pk, sk, chal, V)$检查证据 $V$ 的有效性。
+**Challenge**: $C$ 生成一个挑战 $chal$，表明 $C$ 想要得到持有性证据的特定数据块。$C$ 发送 $chal$ 给 $S$ 。$S$ 运行 $GenProof(pk,F,chal,\sum)$ 生成数据持有性证据 $V$ 并发送给 $S$。最后，$C$ 可以通过运行$CheckProof(pk, sk, chal, V)$检查证据 $V$ 的有效性。
 
 在Setup阶段，C 计算每个文件快的标签并把它们和文件 F 一起存储在 S 上。在Challenge 阶段，C 要求
 
